@@ -28,9 +28,6 @@ export class AppComponent {
   DeleteIcon = faTrash;
   completedIcon = faCircleCheck;
   doneEditing = faCheck;
-  newTaskName = '';
-  newTaskDescription = '';
-  newTaskDate = '';
   EditName = '';
   editDescription = '';
   editDate = '';
@@ -45,21 +42,6 @@ export class AppComponent {
     e.isCompleted = !e.isCompleted;
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
-
-  // AddNewTask() {
-  //   this.tasks.push(
-  //     new task(
-  //       (this.tasks.length + 1).toString(),
-  //       this.newTaskName,
-  //       this.newTaskDescription,
-  //       this.newTaskDate
-  //     )
-  //   );
-  //   localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  //   this.newTaskName = '';
-  //   this.newTaskDescription = '';
-  //   this.newTaskDate = '';
-  // }
 
   deleteTask(item: task) {
     this.tasks = this.tasks.filter((e) => e.id !== item.id);
