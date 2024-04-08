@@ -8,11 +8,18 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { task } from '../Shared/task';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FontAwesomeModule, FormsModule ,HeaderComponent],
+  imports: [
+    RouterOutlet,
+    FontAwesomeModule,
+    AddTaskComponent,
+    FormsModule,
+    HeaderComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -39,20 +46,20 @@ export class AppComponent {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
-  AddNewTask() {
-    this.tasks.push(
-      new task(
-        (this.tasks.length + 1).toString(),
-        this.newTaskName,
-        this.newTaskDescription,
-        this.newTaskDate
-      )
-    );
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-    this.newTaskName = '';
-    this.newTaskDescription = '';
-    this.newTaskDate = '';
-  }
+  // AddNewTask() {
+  //   this.tasks.push(
+  //     new task(
+  //       (this.tasks.length + 1).toString(),
+  //       this.newTaskName,
+  //       this.newTaskDescription,
+  //       this.newTaskDate
+  //     )
+  //   );
+  //   localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  //   this.newTaskName = '';
+  //   this.newTaskDescription = '';
+  //   this.newTaskDate = '';
+  // }
 
   deleteTask(item: task) {
     this.tasks = this.tasks.filter((e) => e.id !== item.id);
